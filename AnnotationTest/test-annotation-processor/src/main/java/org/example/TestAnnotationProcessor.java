@@ -23,13 +23,13 @@ public class TestAnnotationProcessor extends AbstractProcessor {
         for (Element element : roundEnv.getElementsAnnotatedWith(TestAnnotation.class)) {
             if (element.getKind() == ElementKind.METHOD) {
                 // Process the annotated setter method
-                injectRmiLogic(element);
+                injectPrint(element);
             }
         }
         return true;
     }
 
-    private void injectRmiLogic(Element element) {
+    private void injectPrint(Element element) {
         try {
 
             processingEnv.getMessager().printMessage(Diagnostic.Kind.NOTE, "Attempting to inject print into " + element.getSimpleName());
